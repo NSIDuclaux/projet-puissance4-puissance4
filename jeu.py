@@ -10,7 +10,7 @@ class Puissance4():
             [0,0,0,0,0,0],
             [0,0,0,0,0,0],
             [0,0,0,0,0,0]]
-        self.joueur=self.joueur1
+        self.joueur=self.joueur2
 
     def joueur_actif(self):
         if self.joueur==self.joueur1:
@@ -22,7 +22,7 @@ class Puissance4():
         self.afficher(self.grille)
         self.joueur=self.joueur_actif()
         colone=eval(input("Numero colone?"))
-        self.grille[colone][hauteur(self.grille,colone)]=self.joueur
+        self.grille[colone][self.hauteur(self.grille,colone)]=self.joueur
         self.afficher(self.grille)
         self.verif_colone(self.grille)
         
@@ -35,8 +35,8 @@ class Puissance4():
                 return "Vicotire"
             elif self.grille[k][5]==self.grille[k][6] and self.grille[k][2]==self.grille[k][3] and self.grille[k][3]==self.grille[k][4] and self.grille[k][4]==self.grille[k][5]:
                 return "Vicotire"
-            else:
-                return self.verif_ligne(self.grille)
+            
+        return self.verif_ligne(self.grille)
     def verif_ligne(self,grille):
         for k in range(6):
             if grille[0][k]==grille[1][k] and grille[1][k]==grille[2][k] and grille[2][k]==grille[3][k] and grille[3][k]==grille[4][k]:
@@ -45,14 +45,15 @@ class Puissance4():
                 return "Vicotire"
             elif grille[5][k]==grille[6][k] and grille[2][k]==grille[3][k] and grille[3][k]==grille[4][k] and grille[4][k]==grille[5][k]:
                 return "Vicotire"
-            else:
-                return self.jeu()
+        
+        return self.jeu()
     
     def hauteur(self,grille,colone):
         for k in range (len(grille)):
             if grille[colone][k]==0:
                 return k
     def afficher(self,grille):
+        
         print(grille)
         
 
