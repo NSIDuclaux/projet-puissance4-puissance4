@@ -87,36 +87,36 @@ class Puissance4():
         elif grille[2][2]==grille[3][3] and grille[3][3]==grille[4][4] and grille[4][4]==grille[5][5] and grille[2][2]!=0 :
             print("Victoire")
             return "Victoire"
-    self.verif_diago_decroi(self.grille)
+        self.verif_diago_decroi(self.grille)
 
     def veif_diago_decroi(self,grille): 
-        if grille[0][2]==grille[1][3] and grille[1][3]==grille[2][4] and grille[2][4]==grille[3][5] and grille[0][2]!=0 :
+        if grille[0][3]==grille[1][2] and grille[1][2]==grille[2][1] and grille[2][1]==grille[3][0] and grille[0][3]!=0 :
             print("Victoire")
             return "Victoire"
-        elif grille[0][1]==grille[1][2] and grille[1][2]==grille[2][3] and grille[2][3]==grille[3][4] and grille[0][2]!=0 :
+        elif grille[2][5]==grille[3][4] and grille[3][4]==grille[4][3] and grille[4][3]==grille[5][2] and grille[5][2]!=0 :
             print("Victoire")
             return "Victoire"
-        elif grille[0][0]==grille[1][1] and grille[1][1]==grille[2][2] and grille[2][2]==grille[3][3] and grille[0][2]!=0 :
+        elif grille[1][5]==grille[2][4] and grille[2][4]==grille[3][3] and grille[3][3]==grille[4][2] and grille[4][2]!=0 :
             print("Victoire")
             return "Victoire"
-        elif grille[1][0]==grille[2][1] and grille[2][1]==grille[3][2] and grille[3][2]==grille[4][3] and grille[0][2]!=0 :
+        elif grille[5][1]==grille[4][2] and grille[2][4]==grille[3][3] and grille[3][3]==grille[4][2] and grille[4][2]!=0 :
             print("Victoire")
             return "Victoire"
-        elif grille[1][1]==grille[2][2] and grille[2][2]==grille[3][3] and grille[3][3]==grille[4][4] and grille[0][2]!=0 :
+        elif grille[0][5]==grille[1][4] and grille[1][4]==grille[2][3] and grille[2][3]==grille[3][2] and grille[3][2]!=0 :
             print("Victoire")
             return "Victoire"
-        elif grille[1][2]==grille[2][3] and grille[2][3]==grille[3][4] and grille[3][4]==grille[4][5] and grille[0][2]!=0 :
+        elif grille[3][2]==grille[4][1] and grille[1][4]==grille[2][3] and grille[2][3]==grille[3][2] and grille[3][2]!=0 :
             print("Victoire")
             return "Victoire"
-        elif grille[2][0]==grille[3][1] and grille[3][1]==grille[4][2] and grille[4][2]==grille[5][4] and grille[0][2]!=0 :
+        elif grille[3][2]==grille[4][1] and grille[4][1]==grille[5][0] and grille[2][3]==grille[3][2] and grille[3][2]!=0 
+            return "Victoire"
+        elif grille[0][4]==grille[1][3] and grille[1][3]==grille[2][2] and grille[2][2]==grille[3][1] and grille[2][2]!=0 :
             print("Victoire")
             return "Victoire"
-        elif grille[2][1]==grille[3][2] and grille[3][2]==grille[4][3] and grille[4][3]==grille[5][4] and grille[0][2]!=0 :
+        elif grille[3][1]==grille[4][0] and grille[1][3]==grille[2][2] and grille[2][2]==grille[3][1] and grille[2][2]!=0 :
             print("Victoire")
             return "Victoire"
-        elif grille[2][2]==grille[3][3] and grille[3][3]==grille[4][4] and grille[4][4]==grille[5][5] and grille[0][2]!=0 :
-            print("Victoire")
-            return "Victoire"
+        self.jeu()
     
     def hauteur(self,grille,colone):
         for k in range (len(grille)):
