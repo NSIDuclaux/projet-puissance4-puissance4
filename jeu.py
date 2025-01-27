@@ -59,7 +59,7 @@ class Puissance4():
                     print("Victoire")
                     return "fini"
         self.verif_diago_croi(self.grille)
-    def verif_diago_croi(self,grille):def verif_diago_croi(self,grille):
+    def verif_diago_croi(self,grille):
         if grille[0][2]==grille[1][3] and grille[1][3]==grille[2][4] and grille[2][4]==grille[3][5] and grille[0][2]!=0 :
             print("Victoire")
             return "Victoire"
