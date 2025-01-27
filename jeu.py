@@ -69,7 +69,7 @@ class Puissance4():
         elif grille[0][0]==grille[1][1] and grille[1][1]==grille[2][2] and grille[2][2]==grille[3][3] and grille[0][0]!=0 :
             print("Victoire")
             return "Victoire"
-        elif grille[1][0]==grille[2][1] and grille[2][1]==grille[3][2] and grille[3][2]==grille[4][3] grille[1][0]!=0 :
+        elif grille[1][0]==grille[2][1] and grille[2][1]==grille[3][2] and grille[3][2]==grille[4][3] and grille[1][0]!=0 :
             print("Victoire")
             return "Victoire"
         elif grille[1][1]==grille[2][2] and grille[2][2]==grille[3][3] and grille[3][3]==grille[4][4] and grille[1][1]!=0 :
@@ -108,7 +108,7 @@ class Puissance4():
         elif grille[3][2]==grille[4][1] and grille[1][4]==grille[2][3] and grille[2][3]==grille[3][2] and grille[3][2]!=0 :
             print("Victoire")
             return "Victoire"
-        elif grille[3][2]==grille[4][1] and grille[4][1]==grille[5][0] and grille[2][3]==grille[3][2] and grille[3][2]!=0 
+        elif grille[3][2]==grille[4][1] and grille[4][1]==grille[5][0] and grille[2][3]==grille[3][2] and grille[3][2]!=0:
             return "Victoire"
         elif grille[0][4]==grille[1][3] and grille[1][3]==grille[2][2] and grille[2][2]==grille[3][1] and grille[2][2]!=0 :
             print("Victoire")
