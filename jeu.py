@@ -93,14 +93,8 @@ class Puissance4():
             return "Victoire"
         self.verif_diago_decroi(self.grille)
 
-<<<<<<< HEAD
     def verif_diago_decroi(self,grille): 
         if grille[0][3]==grille[1][2] and grille[1][2]==grille[2][1] and grille[2][1]==grille[3][0] and grille[0][3]!=0 :
-=======
-    def veif_diago_decroi(self,grille):
-        #modifier les valeurs 
-        if grille[0][2]==grille[1][3] and grille[1][3]==grille[2][4] and grille[2][4]==grille[3][5]:
->>>>>>> b4fbe0a4a08ce167107ba7aa7cff5e4c0b24c521
             print("Victoire")
             return "Victoire"
         elif grille[0][1]==grille[1][2] and grille[1][2]==grille[2][3] and grille[2][3]==grille[3][4]:
@@ -134,57 +128,6 @@ class Puissance4():
                 return k
     def afficher(self, grille):
         print(grille)
-<<<<<<< HEAD
-=======
-        speed(50)
-        
-        self.colorier_fond()
-        for i in range(6):
-            for j in range(6):
-                up()
-                goto(x_base + j * largeur, y_base - i * largeur)
-                down()
-                fillcolor("white")
-                begin_fill()
-                circle(largeur / 2)
-                end_fill()
-
-        for i in range(6):
-            up()
-            goto(x_base + i * largeur, y_base -  6 * largeur )
-            down()
-            write(str(i))
-
-    def colorier_fond(self):
-        up()
-        goto(-200, 200)  
-        fillcolor("orange") 
-        down()
-        begin_fill()
-        for color_fond in range(4):
-            forward(600)
-            right(90)
-        end_fill()
-
-    def gerer_clic(x,y):
-        print(x,y)
-        pass
-
-
-    def dessiner_pion(self, x, y, joueur):
-        up()
-        goto(x_base + (x) * largeur, y_base - (y + 1) * largeur)
-        down()
-        if joueur == self.joueur1:
-            # Pion ROUGE
-            color('red')
-        else:
-            # Pion BLEU
-            color('blue')
-        begin_fill()
-        circle(largeur / 2)
-        end_fill()
->>>>>>> b4fbe0a4a08ce167107ba7aa7cff5e4c0b24c521
 
 teste=Puissance4()
 teste.jeu()
