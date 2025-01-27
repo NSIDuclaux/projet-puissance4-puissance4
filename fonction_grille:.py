@@ -20,12 +20,13 @@ def afficher():
         for k in range(6):
             up()
             goto(x_base + k * largeur, y_base - 6 * largeur )
-            down()
             write(str(k))
+            down()
 
 def colorier_fond():
     up()
     goto(-270, 280)  
+<<<<<<< HEAD
     bgcolor("orange")
     begin_fill()
     down()
@@ -36,6 +37,16 @@ def colorier_fond():
 
 def gerer_clic(x,y):
     dessiner_pion(x,y)
+=======
+    fillcolor("blue")
+    begin_fill()
+    down()
+    for color_fond in range(4):
+        forward(440)
+        right(90)
+        end_fill()
+def gerer_click(x,y):
+>>>>>>> 7618a802f22f1927a6ab909562413a4d23e48697
     if x < -170:
         x=0
     elif -170 < x <-110:
@@ -62,6 +73,7 @@ def gerer_clic(x,y):
     else:
         y=5
     print(x,y)
+<<<<<<< HEAD
 
 def dessiner_pion(x, y):
         up()
@@ -76,6 +88,11 @@ def dessiner_pion(x, y):
     
 
 
+=======
+    
+        
+onscreenclick(gerer_click)
+>>>>>>> 7618a802f22f1927a6ab909562413a4d23e48697
 speed(70)
 afficher()
 done()
