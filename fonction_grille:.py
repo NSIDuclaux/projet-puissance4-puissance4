@@ -5,6 +5,7 @@ x_base= -150
 y_base= 150
 
 def afficher():
+    colorier_fond()
     for i in range(6):
         for j in range(6):
             up()
@@ -15,25 +16,23 @@ def afficher():
             circle(largeur / 2)
             end_fill()
 
-        for i in range(6):
+        for k in range(6):
             up()
-            goto(x_base + i * largeur, y_base -  6 * largeur )
+            goto(x_base + k * largeur, y_base - 6 * largeur )
             down()
-            write(str(i))
+            write(str(k))
 
 def colorier_fond():
     up()
     goto(-250, 230)  
-    fillcolor("blue")
-    down()  
+    fillcolor("orange")
     begin_fill()
     for color_fond in range(4):
-        forward(500)
+        forward(600)
         right(90)
         end_fill()
         
 
-speed(50)
+speed(70)
 afficher()
-colorier_fond()
 done()
