@@ -1,4 +1,5 @@
 from turtle import *
+from fonction_grille import*
 
 largeur= 60
 x_base= -150
@@ -126,6 +127,7 @@ class Puissance4():
         for k in range (len(grille)):
             if grille[colone][k]==0:
                 return k
+            
     def afficher(self, grille):
         print(grille)
 
