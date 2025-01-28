@@ -1,6 +1,5 @@
 from turtle import *
 from fonction_grille import *
-from time import *
 
 largeur= 60
 x_base= -150
