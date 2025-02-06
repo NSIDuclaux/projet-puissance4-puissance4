@@ -1,11 +1,12 @@
 from turtle import *
+from jeu import*
+from random import*
 
 largeur= 60
 x_base= -200
 y_base= 200
 
-def afficher():
-    onscreenclick(gerer_clic)
+def afficher(self):
     colorier_fond()
     for i in range(6):
         for j in range(6):
@@ -23,7 +24,7 @@ def afficher():
             write(str(k))
             down()
 
-def colorier_fond():
+def colorier_fond(self):
     up()
     goto(-270, 280)  
     bgcolor("orange")
@@ -34,6 +35,7 @@ def colorier_fond():
         right(90)
         end_fill()
 
+<<<<<<< HEAD
 def gerer_clic(x,y):
     dessiner_pion(x,y)
     fillcolor("blue")
@@ -94,20 +96,65 @@ def gerer_click(x,y):
 
 
 def dessiner_pion(x, y):
+=======
+def dessiner_pion(self,colone,ligne):
+        joueur = randint(1,2)
+>>>>>>> 476d4a3489d22f1c33a8f2d916ae41622d7c3d04
         up()
-        goto(x_base + (x) * largeur, y_base - (y + 1) * largeur)
+        x = emplacement_colone(colone)
+        y = emplacement_ligne(ligne)
+        goto(x,y)
         down()
-        color('red')
+        if joueur == 1:
+            color('red')
+        else:
+            color('blue')
         begin_fill()
         circle(largeur / 2)
         end_fill()
-        # rajouter print pour verifie tout ca
-        #en fontion des coordonne du tableu
-    
 
+<<<<<<< HEAD
         
 onscreenclick(gerer_click)
+=======
+
+def emplacement_ligne(self,ligne):
+    y = 0
+    if ligne == 0:
+        y = -100
+    elif ligne == 1:
+        y = -40
+    elif ligne == 2:
+        y = 20
+    elif ligne == 3:
+        y = 80
+    elif ligne == 4:
+        y = 140
+    else:
+        y = 200
+    return y
+
+def emplacement_colone(self,colone):
+    x = 0
+    if colone == 0:
+        x = -200
+    elif colone == 1:
+        x = -140
+    elif colone == 2:
+        x = -80
+    elif colone == 3:
+        x = -20
+    elif colone == 4:
+        x = 40
+    else:
+        x = 80
+    return x
+>>>>>>> 476d4a3489d22f1c33a8f2d916ae41622d7c3d04
 
 speed(70)
 afficher()
 done()
+<<<<<<< HEAD
+=======
+
+>>>>>>> 476d4a3489d22f1c33a8f2d916ae41622d7c3d04
