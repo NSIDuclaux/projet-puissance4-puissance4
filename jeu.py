@@ -1,10 +1,3 @@
-from turtle import *
-from fonction_grille import *
-
-largeur= 60
-x_base= -150
-y_base= 150
-
 class Puissance4():
 
     def __init__(self):
@@ -18,8 +11,8 @@ class Puissance4():
             [0,0,0,0,0,0],
             [0,0,0,0,0,0]]
         self.joueur = self.joueur2
-        speed(200)
-        afficher()
+        self.colone=0
+        self.ligne=0
 
     def joueur_actif(self):
         if self.joueur == self.joueur1:
@@ -30,8 +23,9 @@ class Puissance4():
     def jeu(self):
         self.afficher(self.grille)
         self.joueur=self.joueur_actif()
-        colone = eval(input())
-        self.grille[colone][self.hauteur(self.grille,colone)]=self.joueur
+        self.colone = self.x()
+        self.ligne=self.hauteur(self.grille,self.colone)
+        self.grille[self.colone][self.ligne]=self.joueur
         self.verif_ligne(self.grille)
     
 
@@ -131,8 +125,10 @@ class Puissance4():
         for k in range (len(grille)):
             if grille[colone][k]==0:
                 return k
+    
     def afficher(self, grille):
         print(grille)
+    
     def x(self):
         x=int(eval(input("colone?")))
         if x==1:
@@ -150,9 +146,13 @@ class Puissance4():
         elif x==5:
             colone=4
             return colone
-        else:
+        elif x==6:
             colone=5
             return colone
+        else:
+            print("le chiffre doit être entre 1 et 6")
+            return self.x()
+    
         
 
 teste=Puissance4()
