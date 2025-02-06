@@ -150,7 +150,7 @@ class Puissance4():
         elif x==5:
             colone=4
             return colone
-        else x==6:
+        elif x==6:
             colone=5
             return colone
         else:
