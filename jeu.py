@@ -18,7 +18,6 @@ class Puissance4():
             [0,0,0,0,0,0],
             [0,0,0,0,0,0]]
         self.joueur = self.joueur2
-        self.colone = 0
         speed(200)
         afficher()
 
@@ -31,8 +30,8 @@ class Puissance4():
     def jeu(self):
         self.afficher(self.grille)
         self.joueur=self.joueur_actif()
-        self.colone = self.x()
-        self.grille[self.colone][self.hauteur(self.grille,self.colone)]=self.joueur
+        colone = eval(input())
+        self.grille[colone][self.hauteur(self.grille,colone)]=self.joueur
         self.verif_ligne(self.grille)
     
 
@@ -151,7 +150,7 @@ class Puissance4():
         elif x==5:
             colone=4
             return colone
-        else x==6:
+        else:
             colone=5
             return colone
         

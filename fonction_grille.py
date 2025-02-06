@@ -26,7 +26,6 @@ def afficher():
 def colorier_fond():
     up()
     goto(-270, 280)  
-<<<<<<< HEAD
     bgcolor("orange")
     begin_fill()
     down()
@@ -37,7 +36,6 @@ def colorier_fond():
 
 def gerer_clic(x,y):
     dessiner_pion(x,y)
-=======
     fillcolor("blue")
     begin_fill()
     down()
@@ -45,7 +43,7 @@ def gerer_clic(x,y):
         forward(440)
         right(90)
         end_fill()
-<<<<<<< HEAD:fonction_grille.py
+
 # def gerer_click(x,y):
 
 #     if x < -170:
@@ -65,9 +63,8 @@ def gerer_clic(x,y):
     
         
 # onscreenclick(gerer_click)
-=======
+
 def gerer_click(x,y):
->>>>>>> 7618a802f22f1927a6ab909562413a4d23e48697
     if x < -170:
         x=0
     elif -170 < x <-110:
@@ -94,7 +91,7 @@ def gerer_click(x,y):
     else:
         y=5
     print(x,y)
-<<<<<<< HEAD
+
 
 def dessiner_pion(x, y):
         up()
@@ -108,13 +105,9 @@ def dessiner_pion(x, y):
         #en fontion des coordonne du tableu
     
 
-
-=======
-    
         
 onscreenclick(gerer_click)
->>>>>>> 7618a802f22f1927a6ab909562413a4d23e48697
+
 speed(70)
 afficher()
 done()
->>>>>>> f974ea776a02eac240761f296e4f391d96504637:fonction_grille:.py
