@@ -478,4 +478,6 @@ class Puissance4():
             forward(470)
             right(90)
             end_fill()
-            
+
+test=Puissance4()
+test.jeu()
