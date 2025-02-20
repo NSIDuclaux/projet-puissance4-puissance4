@@ -7,7 +7,7 @@ from copy import deepcopy
 
 class Puissance4():
 
-    def __init__(self):#D
+    def __init__(self):
         self.joueur1 = 1
         self.joueur2 = 2
         self.grille=[
@@ -44,31 +44,13 @@ class Puissance4():
             self.joueur=self.joueur1
             print("Patience")
 
-
-    def joueur_actif(self):#D
-        if self.joueur == self.joueur1:
-            return self.joueur2
-        else:
-            return self.joueur1
         
-    def bot_move(self):#N
+    def bot_move(self):
         meilleur_coup = self.calculer_meilleur_coup(self.grille)
         return meilleur_coup
 
-    def calculer_meilleur_coup(self, grille):#N
+    def calculer_meilleur_coup(self, grille):
         colonnes_valides = [i for i in range(6) if any(grille[i][j] == 0 for j in range(6))]
-
-        coups_bloquer = []
-        for col in colonnes_valides:
-            ligne = self.hauteur(grille, col)
-            grille_temp = deepcopy(grille)
-            grille_temp[col][ligne] = self.joueur1 
-            if self.verif_victoire(grille_temp, col, ligne):
-                coups_bloquer.append(col)
-
-        if coups_bloquer:
-            return random.choice(coups_bloquer)
-
         coups_victoire = []
         for col in colonnes_valides:
             ligne = self.hauteur(grille, col)
@@ -79,7 +61,20 @@ class Puissance4():
                 coups_victoire.append(col)
 
         if coups_victoire:
-            return random.choice(coups_victoire)
+                return random.choice(coups_victoire)
+        
+        coups_bloquer = []
+        for col in colonnes_valides:
+            ligne = self.hauteur(grille, col)
+            grille_temp = deepcopy(grille)
+            grille_temp[col][ligne] = self.joueur1 
+            if self.verif_victoire(grille_temp, col, ligne):
+                coups_bloquer.append(col)
+
+        if coups_bloquer:
+                return random.choice(coups_bloquer)
+
+    
 
         meilleures_scores = []
         for col in colonnes_valides:
@@ -95,7 +90,7 @@ class Puissance4():
 
         return random.choice(coups_possibles)
     
-    def evaluer_plateau(self, grille):#N
+    def evaluer_plateau(self, grille):
         score = 0
         for i in range(6):
             for j in range(6):
@@ -109,7 +104,7 @@ class Puissance4():
                         score -= 100  
         return score
     
-    def verif_victoire(self, grille, col, ligne):#N
+    def verif_victoire(self, grille, col, ligne):
         joueur = grille[col][ligne]
         
 
@@ -155,7 +150,7 @@ class Puissance4():
 
 
 
-    def jeu(self):#D
+    def jeu(self):
         self.plein()
         compteur=6
         self.afficher()
@@ -180,28 +175,136 @@ class Puissance4():
         self.grille[self.colone][self.ligne]=self.joueur
         self.verif_ligne(self.grille)
     
-    def noir(self,colone,ligne):#D
-        if ligne<6:
+    def plein(self):#D
+        for k in range(6):
+            if self.grille[k][-1]!=0:
+                self.listeplein.append(k)
+    
+    def afficher(self):#N
+        speed(0)
+        self.colorier_fond()
+        for i in range(6):
+            for j in range(6):
+                up()
+                goto(self.x_base + j * self.largeur, self.y_base - i * self.largeur)
+                if self.grille[j][5-i]==2:
+                    down()
+                    fillcolor("#FFD700")
+                    begin_fill()
+                    circle(self.largeur / 2)
+                    end_fill()
+                elif self.grille[j][5-i]==1:
+                    down()
+                    fillcolor("red")
+                    begin_fill()
+                    circle(self.largeur / 2)
+                    end_fill()
+                else:
+                    down()
+                    fillcolor("black")
+                    begin_fill()
+                    circle(self.largeur / 2)
+                    end_fill()
+            for k in range(6):
+                up()
+                goto(self.x_base + k * self.largeur, self.y_base - 6 * self.largeur )
+                write(str(k+1))
+                down()
+
+    def joueur_actif(self):#D
+        if self.joueur == self.joueur1:
+            return self.joueur2
+        else:
+            return self.joueur1
+    
+    def x(self):#D
+        x=int(eval(input("colone?")))
+        if x==1:
+            colone=0
+            return colone
+        elif x==2:
+            colone=1
+            return colone
+        elif x==3:
+            colone=2
+            return colone
+        elif x==4:
+            colone=3
+            return colone
+        elif x==5:
+            colone=4
+            return colone
+        elif x==6:
+            colone=5
+            return colone
+        else:
+            print("Le chiffre doit être entre 1 et 6")
+            return self.x()
+    
+    def hauteur(self,grille,colone):#D
+        for k in range (len(grille)):
+            if grille[colone][k]==0:
+                return k
+    
+    def dessiner_pion(self,colone,ligne,joueur):#N
+            speed(0)
             up()
             x = self.emplacement_colone(colone)
             y = self.emplacement_ligne(ligne)
             goto(x,y)
             down()
-            color('black')
+            if joueur == 1:
+                color('red')
+            else:
+                color('#FFD700')
             begin_fill()
             circle(self.largeur / 2)
             end_fill()
     
-    def plein(self):#D
-        for k in range(6):
-            if self.grille[k][-1]!=0:
-                self.listeplein.append(k+1)
+    def noir(self,colone,ligne):#D et N
+            speed(0)
+            if ligne<6:
+                up()
+                x = self.emplacement_colone(colone)
+                y = self.emplacement_ligne(ligne)
+                goto(x,y)
+                down()
+                color('black')
+                begin_fill()
+                circle(self.largeur / 2)
+                end_fill()
     
+    def emplacement_ligne(self,ligne):#D
+        y = 0
+        if ligne == 0:
+            y = -100
+        elif ligne == 1:
+            y = -40
+        elif ligne == 2:
+            y = 20
+        elif ligne == 3:
+            y = 80
+        elif ligne == 4:
+            y = 140
+        else:
+            y = 200
+        return y
 
-    def hauteur(self,grille,colone):#D
-        for k in range (len(grille)):
-            if grille[colone][k]==0:
-                return k
+    def emplacement_colone(self,colone):#D
+        x = 0
+        if colone == 0:
+            x = -200
+        elif colone == 1:
+            x = -140
+        elif colone == 2:
+            x = -80
+        elif colone == 3:
+            x = -20
+        elif colone == 4:
+            x = 40
+        else:
+            x = 100
+        return x
     
 
     def verif_ligne(self,grille):#D
@@ -224,7 +327,7 @@ class Puissance4():
                         return self.defaite()     
         self.verif_colone(self.grille)
     
-    def verif_colone(self,grille):#d
+    def verif_colone(self,grille):#D
         for k in range(6):
             if grille[3][k]!=0 :
                 if grille[0][k]==grille[1][k] and grille[1][k]==grille[2][k] and grille[2][k]==grille[3][k] :
@@ -343,124 +446,13 @@ class Puissance4():
         self.joue=False
         self.jeu()
 
+
+    def victoire(self):#N
+       return self.afficher_message("Victoire !","green","white")
     
+    def defaite(self):#N
+        return self.afficher_message("Défaite !","red","white")
     
-    def x(self):#D
-        x=int(eval(input("colone?")))
-        if x==1:
-            colone=0
-            return colone
-        elif x==2:
-            colone=1
-            return colone
-        elif x==3:
-            colone=2
-            return colone
-        elif x==4:
-            colone=3
-            return colone
-        elif x==5:
-            colone=4
-            return colone
-        elif x==6:
-            colone=5
-            return colone
-        else:
-            print("Le chiffre doit être entre 1 et 6")
-            return self.x()
-        
-    def afficher(self):#N
-        speed(20000)
-        self.colorier_fond()
-        for i in range(6):
-            for j in range(6):
-                up()
-                goto(self.x_base + j * self.largeur, self.y_base - i * self.largeur)
-                if self.grille[j][5-i]==2:
-                    down()
-                    fillcolor("#FFD700")
-                    begin_fill()
-                    circle(self.largeur / 2)
-                    end_fill()
-                elif self.grille[j][5-i]==1:
-                    down()
-                    fillcolor("red")
-                    begin_fill()
-                    circle(self.largeur / 2)
-                    end_fill()
-                else:
-                    down()
-                    fillcolor("black")
-                    begin_fill()
-                    circle(self.largeur / 2)
-                    end_fill()
-
-
-
-            for k in range(6):
-                up()
-                goto(self.x_base + k * self.largeur, self.y_base - 6 * self.largeur )
-                write(str(k+1))
-                down()
-
-    def colorier_fond(self):#N
-        up()
-        goto(-270, 280)  
-        bgcolor("#0000CD")
-        begin_fill()
-        down()
-        for color_fond in range(4):
-            forward(470)
-            right(90)
-            end_fill()
-
-    def dessiner_pion(self,colone,ligne,joueur):#N
-            up()
-            x = self.emplacement_colone(colone)
-            y = self.emplacement_ligne(ligne)
-            goto(x,y)
-            down()
-            if joueur == 1:
-                color('red')
-            else:
-                color('#FFD700')
-            begin_fill()
-            circle(self.largeur / 2)
-            end_fill()
-
-
-    def emplacement_ligne(self,ligne):#D
-        y = 0
-        if ligne == 0:
-            y = -100
-        elif ligne == 1:
-            y = -40
-        elif ligne == 2:
-            y = 20
-        elif ligne == 3:
-            y = 80
-        elif ligne == 4:
-            y = 140
-        else:
-            y = 200
-        return y
-
-    def emplacement_colone(self,colone):#D
-        x = 0
-        if colone == 0:
-            x = -200
-        elif colone == 1:
-            x = -140
-        elif colone == 2:
-            x = -80
-        elif colone == 3:
-            x = -20
-        elif colone == 4:
-            x = 40
-        else:
-            x = 100
-        return x
-
     def afficher_message(self,message,couleur_fond,couleur_texte):#N
         screen = Screen()
         screen.title(message)
@@ -475,14 +467,15 @@ class Puissance4():
         t.write(message,align="center",font=("Arial",40,"bold"))
         screen.exitonclick()
 
-    def victoire(self):#N
-       return self.afficher_message("Victoire !","green","white")
     
-    def defaite(self):#N
-        return self.afficher_message("Défaite !","red","white")
-
-        
-        
-teste=Puissance4()
-teste.pile_ou_face()
-teste.jeu()
+    def colorier_fond(self):#N
+        up()
+        goto(-270, 280)  
+        bgcolor("#0000CD")
+        begin_fill()
+        down()
+        for _ in range(4):
+            forward(470)
+            right(90)
+            end_fill()
+            
